@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 配置数据源，事务 -->
+    <environments default="test">
+        <environment id="test">
+            <!-- 事务：JDBC/MANAGED-自己管理去 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--数据源配置 type="POOLED/UNPOOLED/JNDI"
+                UNPOOLED 每次被请求时简单打开和关闭连接
+                POOLED  这是 JDBC 连接对象的数据源连接池的实现,用来避免创建新的连接实例 时必要的初始连接和认证时间
+                JNDI  这个数据源的实现是为了使用如 Spring
+                或应用服务器这类的容器, 容器可以集 中或在外部配置数据源,然后放置一个 JNDI 上下文的引用-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/goods?serverTimezone=UTC"/>
+                <property name="username" value="myuser"/>
+                <property name="password" value="123"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"></mapper>
+    </mappers>
+</configuration>

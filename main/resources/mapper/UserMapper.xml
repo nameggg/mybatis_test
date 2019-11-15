@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别名称 -->
+<mapper namespace="com.packages.dao.UserDao">
+    <resultMap id="userMR" type="com.packages.entity.User">
+        <id property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="password" column="password"/>
+    </resultMap>
+    <select id="allByUser" resultMap="userMR">
+        select * from user
+    </select>
+</mapper>
